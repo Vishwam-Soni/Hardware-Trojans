@@ -1,0 +1,22 @@
+# 1. Read all Verilog files in the source directory
+read_verilog src/*.v
+
+# 2. Elaborate the design hierarchy using aes_top as the highest level
+hierarchy -check -top aes_top
+
+# 3. Perform high-level synthesis (procedural blocks, FSMs, memory arrays)
+proc; opt; fsm; opt; memory; opt
+
+# 4. Map to internal cell library
+techmap; opt
+
+# 5. Map logic to generic CMOS gates (for academic Area metrics)
+abc -g cmos2
+
+# 6. Cleanup unused wires and cells
+clean
+
+# 7. Output the final statistics
+stat
+# 8. Write the synthesized gate-level netlist to a file
+write_verilog -noattr aes_baseline_netlist.v

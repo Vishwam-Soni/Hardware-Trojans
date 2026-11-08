@@ -1,0 +1,12 @@
+# OpenLane generated files
+runs/
+
+# Compiled simulation files
+*.vvp
+aes_sim
+*.out
+
+# Temporary files
+*.log
+*.tmp
+*.bak
